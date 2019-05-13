@@ -17,7 +17,7 @@ if(isset($_POST)){
 
   $date = date('l jS \of F Y h:i:s A');
 
-  $sql = "INSERT INTO posts (titel, content, date) VALUES ('$titel', '$content', '$date')";
+  $sql = "INSERT INTO posts (titel, content, date) VALUES ('$titel', '$content', '$date')"; //Skickar informationen till databasen
 
   mysqli_query($db, $sql);
 

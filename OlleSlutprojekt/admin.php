@@ -38,20 +38,20 @@ if(!isset($_SESSION['admin']) && $_SESSION['admin'] != 1){
      <main>
 
        <?php
-          if(mysqli_num_rows($res) > 0){
-            while($row = mysqli_fetch_assoc($res)){
+          if(mysqli_num_rows($res) > 0){ 
+            while($row = mysqli_fetch_assoc($res)){ //Returnerar en associativ array som motsvarar den hämtade raden
               $id = $row ['id'];
               $titel = $row ['titel'];
               $date = $row ['date'];
 
               $admin = "<div><a href='del_post.php?pid=$id'>Radera</a></div>"; //Länken som gör att adminen kan ta bort ett inlägg
 
-              $posts .= "<div><h2><a href='view_post.php?pid=$id' target='_blank'>$titel</a></h2><h3>$date</h3>$admin</div>";
+              $posts .= "<div><h2><a href='view_post.php?pid=$id' target='_blank'>$titel</a></h2><h3>$date</h3>$admin</div>"; //Skriver ut ID, titel, datum samt admin
 
             }
             echo $posts; //Skriver ut alla inlägg
-          } else {
-              echo "<p>Det finns inga inlägg!</p>";
+          } else { //om inte förra funkar
+              echo "<p>Det finns inga inlägg!</p>"; //Skriver ut att det inte finns några inlägg
           }
         ?>
 

@@ -1,9 +1,9 @@
 <?php
 session_start();
 include_once("db.php");
-$sql = "SELECT * FROM posts ORDER BY id DESC";
+$sql = "SELECT * FROM posts ORDER BY id DESC"; //Väljer från posts och arrangerar dom via ID
 
-$res = mysqli_query($db, $sql) or die(mysqli_error());
+$res = mysqli_query($db, $sql) or die(mysqli_error()); //Ansluter till databasen, visar ett fel om databasen ej ansluter
 
 $posts = "";
 
@@ -47,7 +47,7 @@ $posts = "";
               $posts .= "<div><h2>$titel</a></h2><h3>$date</h3><p>$content</p></div>"; //Skriver ut innehåll, datum, tid och titel på inlägget
 
             }
-            echo $posts;
+            echo $posts; //skrivet ut posts
           } else {
               echo "<p>Det finns inga inlägg!</p>";
           }
