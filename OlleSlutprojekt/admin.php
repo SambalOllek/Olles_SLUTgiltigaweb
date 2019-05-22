@@ -6,7 +6,7 @@ $res = mysqli_query($db, $sql) or die(mysqli_error());
 $posts = "";
 if(!isset($_SESSION['admin']) && $_SESSION['admin'] != 1){
   header("location: loginpage.php");
-  return; //Kollar om man är inloggad som admin och tar bort dig om detta inte är fallet
+  return; //Kollar om man är inloggad som admin och skickar dig till loginpage om detta inte är fallet
 }
 
  ?>
@@ -38,7 +38,7 @@ if(!isset($_SESSION['admin']) && $_SESSION['admin'] != 1){
      <main>
 
        <?php
-          if(mysqli_num_rows($res) > 0){ 
+          if(mysqli_num_rows($res) > 0){
             while($row = mysqli_fetch_assoc($res)){ //Returnerar en associativ array som motsvarar den hämtade raden
               $id = $row ['id'];
               $titel = $row ['titel'];
@@ -46,7 +46,7 @@ if(!isset($_SESSION['admin']) && $_SESSION['admin'] != 1){
 
               $admin = "<div><a href='del_post.php?pid=$id'>Radera</a></div>"; //Länken som gör att adminen kan ta bort ett inlägg
 
-              $posts .= "<div><h2><a href='view_post.php?pid=$id' target='_blank'>$titel</a></h2><h3>$date</h3>$admin</div>"; //Skriver ut ID, titel, datum samt admin
+              $posts .= "<div><h2><a href='view_post.php?pid=$id' target='_blank'>$titel</a></h2><h3>$date</h3>$admin</div>"; //Skriver ut en länk till inlägget, titel, datum samt admin
 
             }
             echo $posts; //Skriver ut alla inlägg

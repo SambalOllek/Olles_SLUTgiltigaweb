@@ -19,30 +19,30 @@ if(isset($_POST['register'])){
   $c_password = mysqli_real_escape_string($db, $c_password);
 
 
-$sql_store = "INSERT into users (username, password) VALUES ('$username' , '$password')";
+$sql_store = "INSERT into users (username, password) VALUES ('$username' , '$password')"; //Sparar de angivna användaruppgifterna i databasen
 
 $mysqli_fetch_username = "SELECT username FROM users WHERE username ='$username'";
 
-$query_username = mysqli_query($db, $mysqli_fetch_username);
+$query_username = mysqli_query($db, $mysqli_fetch_username); //hämtar användarnamnet från databasen
 
 if(mysqli_num_rows($query_username)) {
   echo "Oops! That username is already taken. Try again!";
   return;
-}
+} //Säger till användaren att användarnamnet redan är taget
 
 if($username == "" ){
   echo "Please insert a username!";
   return;
-}
+} //Säger åt användaren att fylla i ett användarnamn ifall rutan är tom
 
 if($password == ""  || $c_password == ""){
   echo "Please insert a password!";
   return;
-}
+} //Säger åt användaren att fylla i ett lösenord ifall rutan är tom
 
 if($password != $c_password){
   echo "The passwords do not match!";
-return;
+return; //Säger åt användaren att de två lösenord hen skrivit in inte matchar
 }
 
 mysqli_query($db, $sql_store);

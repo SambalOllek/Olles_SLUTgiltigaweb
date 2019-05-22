@@ -37,7 +37,7 @@ $posts = "";
        <?php
 
           if(mysqli_num_rows($res) > 0){
-            while($row = mysqli_fetch_assoc($res)){
+            while($row = mysqli_fetch_assoc($res)){ //Hämtar resultaten som en associativ array
               $id = $row ['id'];
               $titel = $row ['titel'];
               $content = $row ['content'];
@@ -47,9 +47,9 @@ $posts = "";
               $posts .= "<div><h2>$titel</a></h2><h3>$date</h3><p>$content</p></div>"; //Skriver ut innehåll, datum, tid och titel på inlägget
 
             }
-            echo $posts; //skrivet ut posts
+            echo $posts; //skriver ut posts
           } else {
-              echo "<p>Det finns inga inlägg!</p>";
+              echo "<p>Det finns inga inlägg!</p>"; //om det inte finns några posts skriver den ut "Det finns inga inlägg"
           }
 
         ?>

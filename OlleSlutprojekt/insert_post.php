@@ -4,12 +4,12 @@ include_once("db.php");
 
 if(isset($_POST)){
 
-  $titel = strip_tags($_POST['titel']);
-  $content = strip_tags($_POST['content']);
+  $titel = strip_tags($_POST['titel']); //tar bort alla taggar
+  $content = strip_tags($_POST['content']); //tar bort alla taggar
 
   if($titel == "" || $content ==""){
      echo "Alla fält är inte ifyllda!";
-     return;
+     return; //Om alla fält inte är ifyllda skrivs "Alla fält är inte ifyllda" ut
    }
 
   $titel = mysqli_real_escape_string($db, $titel);
@@ -23,7 +23,5 @@ if(isset($_POST)){
 
   header("Location: index.php");
 }
-
 //Kollar så att allt är ifyllt samt lägger in det i databasen
-
 ?>
